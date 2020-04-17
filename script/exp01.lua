@@ -3,7 +3,7 @@
 -- https://twitter.com/schwarz_bach/status/1250708628895457281
 -- https://www.iwanami.co.jp/kagaku/Kagaku_202005_Makino_preprint.pdf
 
-local N = 65536
+local N = 65536 * 1024
 local I = 10 -- infected
 local R = 0 -- recovered
 
