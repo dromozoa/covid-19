@@ -2,6 +2,15 @@
 
 -- https://twitter.com/schwarz_bach/status/1250708628895457281
 -- https://www.iwanami.co.jp/kagaku/Kagaku_202005_Makino_preprint.pdf
+-- https://twitter.com/ClusterJapan/status/1250364311144296454
+
+-- 0日めに519人
+--
+-- (2) 7日めに1078人
+
+
+
+
 
 -- 全人口は100万人
 -- R=1のときにグラフがたいらになる
