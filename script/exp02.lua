@@ -4,83 +4,82 @@
 -- https://www.iwanami.co.jp/kagaku/Kagaku_202005_Makino_preprint.pdf
 -- https://twitter.com/ClusterJapan/status/1250364311144296454
 
--- 0日めに519人
---
--- (2) 7日めに1078人
+--[[
 
+S + I + R = N
 
+dI/dt = beta S I - gamma I
+      = beta (N - I - R) I - gamma I
+dR/dt = gamma I
 
+R0 = beta N / gamma
+beta = gamma R0 / N
 
+dI/dt = (gamma R0 / N) (N - I - R) I - gamma I
+      = gamma (R0 (1 - I/N - R/N) I - I)
+      = gamma I (R0 - 1 - R0 I / N - R0 R / N)
+dR/dt = gamma I
 
--- 全人口は100万人
--- R=1のときにグラフがたいらになる
-local N = 1000000
-local I = 10 -- infected
+]]
 
-local function step(x, y, r, t)
-  local dx_dt = r * (1 - x - y) * x - x
-  local dy_dt = x
-
-  x = x + dx_dt * t
-  y = y + dy_dt * t
-
-  return x, y, dx_dt, dy_dt
+local function reproduction_number(t)
+  if t <= 0 then
+    return 2.5
+  elseif t <= 7 then
+    return 2.5 * 0.6
+  elseif t <= 14 then
+    return 2.5 * 0.4
+  else
+    return 2.5 * 0.2
+  end
 end
 
-local X = I / N
-local Y = 0
-local R0 = 2.5
+local function f(N, I, R, gamma, step)
+  local a
+  local b
 
--- 256tickが1週間
-local tick = 256
+  for t = -20, 70, step do
+    local r = reproduction_number(t)
 
-local M = tick * 16
-local T1 = tick * 5
-local T2 = T1 + tick
-local T3 = T2 + tick
+    local dR_dt = gamma * I
+    local dI_dt = dR_dt * (r * (1 - I / N - R / N) - 1)
 
--- \gamma = 2週間
-local t = 1 / (tick * 2)
-local x1, y1, r1 = X, Y, R0
-local x2, y2, r2 = X, Y, R0
-local x3, y3, r3 = X, Y, R0
-local x4, y4, r4 = X, Y, R0
+    I = I + dI_dt * step
+    R = R + dR_dt * step
 
-for i = 1, M do
-  if i < T1 then
-    r1 = R0
-    r2 = R0
-    r3 = R0
-    r4 = R0
-  elseif i < T2 then
-    r1 = R0 * 0.2
-    r2 = R0 * 0.3
-    r3 = R0 * 0.6
-    r4 = R0 * 0.8
-  elseif i < T3 then
-    r1 = R0 * 0.2
-    r2 = R0 * 0.3
-    r3 = R0 * 0.4
-    r4 = R0 * 0.8
-  else
-    r1 = R0 * 0.2
-    r2 = R0 * 0.3
-    r3 = R0 * 0.2
-    r4 = R0 * 0.8
+    if t == -5.5 then
+      a = I
+    elseif t == 0 then
+      b = I
+    end
+
+    print(t, I, R)
   end
 
-  local dx1, dx2, dx3
-  local dy1, dy2, dy3
+  --local x = math.abs(a - 100) / 100
+  --local y = math.abs(b - 516) / 516
+  --local z = math.sqrt(x * x + y * y)
 
-  x1, y1, dx1, dy1 = step(x1, y1, r1, t)
-  x2, y2, dx2, dy2 = step(x2, y2, r2, t)
-  x3, y3, dx3, dy3 = step(x3, y3, r3, t)
-  x4, y4, dx4, dy4 = step(x4, y4, r4, t)
-
-  local d1 = dx1 + dy1
-  local d2 = dx2 + dy2
-  local d3 = dx3 + dy3
-  local d4 = dx4 + dy4
-
-  print(x4 * N, x3 * N, x2 * N, x1 * N)
+  --return x, y, z
 end
+
+-- 1, 1/5
+-- 3, 1/6
+-- 5, 1/7
+
+-- 1, 0.216216 (8/37)
+
+-- for i = 1, 10 do
+--   local I = i
+--   for j = 8, 100 do
+--     local gamma = 8/j
+--     local x, y, z = f(1000000, I, 0, gamma, 0.25)
+--     if x <= 1/10 and y <= 1/10 then
+--       print(I, j, x, y, z)
+--     end
+--   end
+-- end
+
+f(1000000, 1, 0, 8/37, 0.25)
+-- f(1000000, 5, 0, 1/14, 0.25)
+-- f(1000000, 5, 0, 1/28, 0.25)
