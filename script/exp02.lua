@@ -56,30 +56,31 @@ local function f(N, I, R, gamma, step)
     print(t, I, R)
   end
 
-  --local x = math.abs(a - 100) / 100
-  --local y = math.abs(b - 516) / 516
-  --local z = math.sqrt(x * x + y * y)
-
-  --return x, y, z
+  -- local x = math.abs(a - 100) / 100
+  -- local y = math.abs(b - 516) / 516
+  -- local z = math.sqrt(x * x + y * y)
+  -- return x, y, z
 end
 
--- 1, 1/5
--- 3, 1/6
--- 5, 1/7
-
 -- 1, 0.216216 (8/37)
+-- 1, 32/149
+-- 1, 256/1192
+-- 1, x min => 256/1184
+-- 1, y min => 256/1197
 
--- for i = 1, 10 do
---   local I = i
---   for j = 8, 100 do
---     local gamma = 8/j
---     local x, y, z = f(1000000, I, 0, gamma, 0.25)
---     if x <= 1/10 and y <= 1/10 then
---       print(I, j, x, y, z)
---     end
---   end
--- end
+--[[
+for i = 1, 10 do
+  local I = i
+  for j = 1000, 2000 do
+    local gamma = 256/j
+    local x, y, z = f(1000000, I, 0, gamma, 0.25)
+    if x <= 1/10 and y <= 1/10 then
+      print(I, j, x, y, z)
+    end
+  end
+end
+]]
 
-f(1000000, 1, 0, 8/37, 0.25)
+f(10000000, 1, 0, 256/1197, 0.25)
 -- f(1000000, 5, 0, 1/14, 0.25)
 -- f(1000000, 5, 0, 1/28, 0.25)
