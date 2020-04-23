@@ -47,37 +47,46 @@ local function round(v)
   return math.floor(v + 0.5)
 end
 
+-- ローカル座標の高さ1040が700人に該当する
+local L2N = 700 / 1040
+
 local function path(d)
   local z = parse(d)
 
-  local Y = 0
+  local Y = -546/3
   for i = 1, #z do
     local y = z[i]
     local c = y[1]
-    if c == "l" then
+    if c == "m" then
       local v = round(y[3] * 10)
       assert(v % 6 == 0)
-      Y = Y + v
+      Y = Y + v / 3
+    elseif c == "l" then
+      local v = round(y[3] * 10)
+      assert(v % 6 == 0)
+      Y = Y + v / 3
+      print(Y * L2N)
+    else
+      assert("unknown command " .. c)
     end
-    print(Y, unpack(y))
   end
 end
 
 local function scale(d)
   local z = parse(d)
 
-  local Y = 0
+  local Y = -546/3
   for i = 1, #z do
     local y = z[i]
     local c = y[1]
     if c == "m" then
       local v = round(y[3] * 10)
       assert(v % 3 == 0, v)
-      Y = Y + v
+      Y = Y + v / 3
     elseif c == "l" then
       local v = round(y[3] * 10)
       assert(v % 6 == 0)
-      Y = Y + v
+      Y = Y + v / 3
     else
       assert("unknown command " .. c)
     end
@@ -85,6 +94,6 @@ local function scale(d)
   end
 end
 
--- path(svg:query "#g2281 > path" :attr "d")
-path(svg:query "#g2323 > path" :attr "d")
+path(svg:query "#g2281 > path" :attr "d")
+-- path(svg:query "#g2323 > path" :attr "d")
 -- scale(svg:query "#g2231 > path" :attr "d")
