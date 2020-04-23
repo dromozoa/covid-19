@@ -2,10 +2,10 @@
 
 local xml = require "dromozoa.xml"
 
+local unpack = table.unpack or unpack
+
 local svg_content = io.read "*a"
 local svg = xml.decode(svg_content)
-
-local unpack = table.unpack or unpack
 
 local function parse(d)
   local d = d:gsub(",", " ") .. " "
@@ -63,12 +63,12 @@ local function path(d)
       local v = round(y[3] * 10)
       assert(v % 6 == 0)
       Y = Y + v / 3
-      print(Y, Y * L2N)
+      io.write(("%d\t%.17g\n"):format(Y, Y * L2N))
     elseif c == "l" then
       local v = round(y[3] * 10)
       assert(v % 6 == 0)
       Y = Y + v / 3
-      print(Y, Y * L2N)
+      io.write(("%d\t%.17g\n"):format(Y, Y * L2N))
     else
       assert("unknown command " .. c)
     end
@@ -98,6 +98,6 @@ local function scale(d)
   end
 end
 
--- path(svg:query "#g2281 > path" :attr "d")
-path(svg:query "#g2323 > path" :attr "d")
+path(svg:query "#g2281 > path" :attr "d")
+-- path(svg:query "#g2323 > path" :attr "d")
 -- scale(svg:query "#g2231 > path" :attr "d")
