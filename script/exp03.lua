@@ -53,19 +53,22 @@ local L2N = 700 / 1040
 local function path(d)
   local z = parse(d)
 
+  -- 原点
   local Y = -546/3
   for i = 1, #z do
     local y = z[i]
     local c = y[1]
     if c == "m" then
+      assert(i == 1)
       local v = round(y[3] * 10)
       assert(v % 6 == 0)
       Y = Y + v / 3
+      print(Y, Y * L2N)
     elseif c == "l" then
       local v = round(y[3] * 10)
       assert(v % 6 == 0)
       Y = Y + v / 3
-      print(Y * L2N)
+      print(Y, Y * L2N)
     else
       assert("unknown command " .. c)
     end
@@ -75,6 +78,7 @@ end
 local function scale(d)
   local z = parse(d)
 
+  -- 原点
   local Y = -546/3
   for i = 1, #z do
     local y = z[i]
@@ -94,6 +98,6 @@ local function scale(d)
   end
 end
 
-path(svg:query "#g2281 > path" :attr "d")
--- path(svg:query "#g2323 > path" :attr "d")
+-- path(svg:query "#g2281 > path" :attr "d")
+path(svg:query "#g2323 > path" :attr "d")
 -- scale(svg:query "#g2231 > path" :attr "d")
