@@ -59,6 +59,9 @@ local function search(N, I, gx, gy, step, recursive)
 end
 -- 0.2084 or 0.2085 .. 1/4.8 = 5 / 24
 
+local S = 16376
+local step = 1 / S
+
 -- print(search(100000000, 1, 0, 1, 1/24, 32))
-print(search(10000000, 1, 0, 1, 1/16736, 32))
+print(search(10000000, 1, 0, 1, step, 32))
 -- print(search(10000000, 2, 0, 1, 1/24, 32))
