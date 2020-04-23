@@ -43,6 +43,10 @@ local function parse(d)
   return z
 end
 
+local function round(v)
+  return math.floor(v + 0.5)
+end
+
 local function path(d)
   local z = parse(d)
 
@@ -51,7 +55,9 @@ local function path(d)
     local y = z[i]
     local c = y[1]
     if c == "l" then
-      Y = Y + y[3]
+      local v = round(y[3] * 10)
+      assert(v % 6 == 0)
+      Y = Y + v
     end
     print(Y, unpack(y))
   end
@@ -65,9 +71,13 @@ local function scale(d)
     local y = z[i]
     local c = y[1]
     if c == "m" then
-      Y = Y + y[3]
+      local v = round(y[3] * 10)
+      assert(v % 3 == 0, v)
+      Y = Y + v
     elseif c == "l" then
-      Y = Y + y[3]
+      local v = round(y[3] * 10)
+      assert(v % 6 == 0)
+      Y = Y + v
     else
       assert("unknown command " .. c)
     end
@@ -76,5 +86,5 @@ local function scale(d)
 end
 
 -- path(svg:query "#g2281 > path" :attr "d")
--- path(svg:query "#g2323 > path" :attr "d")
-scale(svg:query "#g2231 > path" :attr "d")
+path(svg:query "#g2323 > path" :attr "d")
+-- scale(svg:query "#g2231 > path" :attr "d")
