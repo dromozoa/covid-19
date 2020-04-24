@@ -20,6 +20,17 @@ dI/dt = (gamma R0 / N) (N - I - R) I - gamma I
       = gamma I (R0 - 1 - R0 I / N - R0 R / N)
 dR/dt = gamma I
 
+
+
+I =~ I0 e ^ {gamma (R0 - 1) t}
+
+519.61538461538 = e ^ {gamma * 30}
+
+gamma = 1/30 ln (519.61538461538)
+  = 0.208436296431092
+
+
+
 ]]
 
 local function reproduction_number(t)
