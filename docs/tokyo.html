@@ -20,9 +20,22 @@
   }
 }
 
+figure.figure-half {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 400px;
+}
+
 figcaption {
   text-align: center;
 }
+
+table.table-half {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 400px;
+}
+
 </style>
 </head>
 <body>
@@ -30,25 +43,112 @@ figcaption {
 
 <h1>COVID-19 / 東京星に、いこう</h1>
 
-<p>
-わたくし、生まれも育ちも工学です。人呼んで<a href="https://twitter.com/vaporoid">煙人計画</a>と発します。とかく数学に行きましても、医学に行きましても、分野分野のお兄貴さんお姐さんにごやっかいかけがちになる博士（野良）です。以後、見苦しき文体お見知りおかれまして、向後万端万端ひきたって、よろしくおたの申します。
+<p style="text-align: right">
+2020年4月27日
 </p>
 
 <p>
-接触を八割削減する
-
-ふたつのポンチ絵、<a href="#figure1">図1</a>と<a href="#figure2">図2</a>を《リバースエンジニアリング》する。
+私、生まれも育ちも工学です。人呼んで<a target="_blank" href="https://twitter.com/vaporoid">煙人計画</a>と発します。とかく数学に行きましても、医学に行きましても、分野分野のお兄貴さんお姐さんにごやっかいかけがちになるアラフォーです。以後、見苦しき文体お見知りおかれまして、向後万端ひきたってよろしくおたの申します。
 </p>
 
-<figure id="figure1">
-  <a target="_blank" href="https://twitter.com/ClusterJapan/status/1250639295674634240"><img src="tokyo-figure1.jpg"></a>
+<p>
+本稿では、ふたつのポンチ絵、<a href="#figure1">図1</a>と<a href="#figure2">図2</a>を《リバースエンジニアリング》する。SIRモデルを用いて、すくなくとも定性的に、これらのポンチ絵を再現できることが指摘されている [<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/vaporoid/status/1251031615142162432">3</a>] 。縦軸が、すくなくとも一般的な意味において、「新規感染者数」ではないだろうことについてもいくつかの指摘がある [<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/vaporoid/status/1251031615142162432">3</a>, <a target="_blank" href="https://twitter.com/yoh_tanimoto/status/1250385333524496384">4</a>] 。
+</p>
+
+<p>
+<figure id="figure1" class="figure-half">
+  <a target="_blank" href="https://twitter.com/ClusterJapan/status/1250639295674634240"><img src="tokyo01.jpg"></a>
   <figcaption>図1 <a target="_blank" href="https://twitter.com/ClusterJapan/status/1250639295674634240">@ClusterJapan氏の4月16日の修正ツイート</a>で呈示されたポンチ絵</figcaption>
 </figure>
+</p>
 
-<figure id ="figure2">
-  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf"><img src="tokyo-figure2.png"></a>
-  <figcaption>図2 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">新型コロナウイルス感染症対策の状況分析・提言</a>のP.3のポンチ絵</figcaption>
+<p>
+2020年4月15日に（修正前の）<a href="#figure1">図1</a>が呈示されたとき、私たち（なかんずく、私）は絶望した。一週間後、4月22日にいたるも、<a href="#figure2">図2</a>の縦軸は「新規感染者数」と表記されていた。あまつさえ、本文にもそのように言及されていた。私たち（なかんずく、私）はふかく絶望した。私たち（なかんずく、私）は信じたかった。だけど、どうして信じることができただろう。
+</p>
+
+<p>
+<figure id ="figure2" class="figure-half">
+  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf"><img src="tokyo02.png"></a>
+  <figcaption>図2 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵</figcaption>
 </figure>
+</p>
+
+<p>
+<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>は、PDF形式で厚生労働省のウェブページに公開された。メタ情報によれば、「<a target="_blank" href="https://www.mhlw.go.jp/kouseiroudoushou/kanbumeibo/">菱谷 文彦 (hishitani-fumihiko)</a>」が「2020/04/22 19:13」に「Microsoft&copy; Word 2016」でPDFを作成したようだ。PDFを拡大していけば、<a href="#figure2">図2</a>の曲線が線分の集合で構成されていることが読みとれる。
+</p>
+
+<p>
+PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこんで、不要な部分を削除して、SVGで書きだした [<a target="_blank" href="tokyo03.svg">5</a>]。青色の線「感染日（80%削減）」と灰色の線「感染日（65%削減）」を点列として抽出した [<a target="_blank" href="tokyo04.xlsx">6</a>] 。各点の局所座標をながめると、どこかの段階で量子化された痕跡を感じる（Wordに貼りつけた段階かもしれないし、WordでPDFを出力した段階かもしれないし、それらとは別の段階かもしれない）。
+</p>
+
+<p>
+20日めまでの抽出結果を<a href="#table1">表1</a>に示す。量子化の影響で小数点以下の人類が生まれた。±1人くらいばらついただろうから、気になるのであれば四捨五入してもよいだろう。
+</p>
+
+<table id="table1" class="table-half">
+  <caption>表1 <a href="#figure2">図2</a>から抽出した値</caption>
+  <tbody>
+    <tr><th>流行時刻（日）</th><th>「新規感染者数」（人）</th></tr>
+    <tr><td>0</td><td>1.3</td></tr>
+    <tr><td>1</td><td>1.3</td></tr>
+    <tr><td>2</td><td>2.7</td></tr>
+    <tr><td>3</td><td>2.7</td></tr>
+    <tr><td>4</td><td>4.0</td></tr>
+    <tr><td>5</td><td>5.4</td></tr>
+    <tr><td>6</td><td>6.7</td></tr>
+    <tr><td>7</td><td>9.4</td></tr>
+    <tr><td>8</td><td>12.1</td></tr>
+    <tr><td>9</td><td>17.5</td></tr>
+    <tr><td>10</td><td>22.9</td></tr>
+    <tr><td>11</td><td>31.0</td></tr>
+    <tr><td>12</td><td>43.1</td></tr>
+    <tr><td>13</td><td>59.2</td></tr>
+    <tr><td>14</td><td>79.4</td></tr>
+    <tr><td>15</td><td>109.0</td></tr>
+    <tr><td>16</td><td>149.4</td></tr>
+    <tr><td>17</td><td>203.3</td></tr>
+    <tr><td>18</td><td>278.7</td></tr>
+    <tr><td>19</td><td>379.6</td></tr>
+    <tr><td>20</td><td>519.6</td></tr>
+  </tbody>
+</table>
+
+<p>
+<a href="#figure1">図1</a>はラスタ画像だからピクセルを数えた。<a href="#figure2">図2</a>の20日めに相当する<a href="#figure1">図1</a>の0日めの「新規感染者数」は518.6±2人程度と読める。最初の20日を再現するために、大仰な数理モデルは必要ない。たとえば、
+\[
+  e^{0.3127t} \tag{1}
+\]
+という指数関数で、ほどよく再現できる。
+</p>
+
+<p>
+さて、ポンチ絵の縦軸は「新規感染者数」ではなく、SIRモデルにおける\(I(t)\)ではないか、そのような指摘があった。SIRモデルは常微分方程式系によって以下のように与えられる（<a target="_blank" href="https://www.ism.ac.jp/editsec/toukei/pdf/54-2-461.pdf">西浦 and 稲葉, 2006</a>）。
+
+\[\begin{aligned}
+  \frac{ dS(t) }{ dt } &amp;= - \beta S(t) I(t) \\
+  \frac{ dI(t) }{ dt } &amp;= \beta S(t) I(t) - \gamma I(t) \\
+  \frac{ dR(t) }{ dt } &amp;= \gamma I(t) \\
+\end{aligned}\]
+全人口\(N = S(t) + I(t) + R(t)\)、再生産数\(\mathcal{R}=\frac{\beta N}{\gamma}\)とおくと、
+\[
+  \frac{ dI(t) }{ dt } = \gamma \left( \mathcal{R} \left( 1 - \frac{I(t) + R(t)}{N} \right) - 1 \right) I(t)
+\]
+\(N\)がとてもおおきいとき、
+\[\begin{aligned}
+  \frac{ dI(t) }{ dt } &amp;= \gamma \left( \mathcal{R} - 1 \right) I(t) \\
+  I(t) &amp;= I(0) e^{ \gamma (\mathcal{R} - 1) } \\
+\end{aligned}\]
+\(\mathcal{R}=2.5\)が与えられているので、式(1)とみくらべると、
+\[\begin{aligned}
+  I(0) &amp;= 1 \\
+  \gamma &amp;= 0.2085 \\
+\end{aligned}\]
+と推定できる。\(\gamma \approx 0.2\)という指摘 [<a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">5</a>] と同様の結果がえられた。
+</p>
+
+<p>
+とてもおおきいとした\(N\)は、それじゃあ、どれくらいおおきいだろうか。<a href="#figure1">図1</a>にてがかりがある。再生産数\(\mathcal{R}=1\)で「新規感染者数」は水平である。縦軸は1ピクセルあたり3.4人程度だから、7日間で2人減って、ぎりぎり水平にレンダリングされるくらいか。
+</p>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>

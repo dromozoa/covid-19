@@ -48,27 +48,24 @@ local function round(v)
 end
 
 -- ローカル座標の高さ1040が700人に該当する
-local L2N = 700 / 1040
+local L2N = 700 / 312
+-- local L2N = 700 / 1040
 
 local function path(d)
   local z = parse(d)
 
   -- 原点
-  local Y = -546/3
+  local Y = -54.607
   for i = 1, #z do
     local y = z[i]
     local c = y[1]
     if c == "m" then
       assert(i == 1)
-      local v = round(y[3] * 10)
-      assert(v % 6 == 0)
-      Y = Y + v / 3
-      io.write(("%d\t%.17g\n"):format(Y, Y * L2N))
+      Y = Y + y[3]
+      io.write(("%.17g\t%d\t%.17g\n"):format(Y, math.floor(Y * 10 / 6 + 0.5), L2N * Y))
     elseif c == "l" then
-      local v = round(y[3] * 10)
-      assert(v % 6 == 0)
-      Y = Y + v / 3
-      io.write(("%d\t%.17g\n"):format(Y, Y * L2N))
+      Y = Y + y[3]
+      io.write(("%.17g\t%d\t%.17g\n"):format(Y, math.floor(Y * 10 / 6 + 0.5), L2N * Y))
     else
       assert("unknown command " .. c)
     end
