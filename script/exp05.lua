@@ -1,24 +1,6 @@
 #! /usr/bin/env lua
 
-local function read_data(filename)
-  local handle = assert(io.open(filename))
-
-  local i = 0
-  local result = {}
-  for line in handle:lines() do
-    local v = assert(line:match "^%d+\t([%d%.]+)$")
-    local v = assert(tonumber(v))
-    result[i] = v
-    i = i + 1
-  end
-
-  return result
-end
-
-local data60 = read_data "punch04-60.txt"
-local data80 = read_data "punch04-80.txt"
-
-local function f(N, I, r0, r20, gamma, step)
+local function f(N, I, r0, r1, r2, gamma, step, flag)
   local R = 0
 
   local result = { [0] = I }
@@ -34,8 +16,8 @@ local function f(N, I, r0, r20, gamma, step)
     result[a] = I
   end
 
-  local r = r20
-  for a = 21, 80 do
+  local r = r1
+  for a = 21, 27 do
     for b = step, 1, step do
       local dR_dt = gamma * I
       local dI_dt = dR_dt * (r * (1 - (I + R) / N) - 1)
@@ -45,7 +27,27 @@ local function f(N, I, r0, r20, gamma, step)
     result[a] = I
   end
 
-  return result
+  local r = r2
+  for a = 28, 34 do
+    for b = step, 1, step do
+      local dR_dt = gamma * I
+      local dI_dt = dR_dt * (r * (1 - (I + R) / N) - 1)
+      I = I + dI_dt * step
+      R = R + dR_dt * step
+    end
+    result[a] = I
+  end
+
+  local d = result[27] - result[34]
+  -- print(d)
+
+  if flag then
+    for i = 0, 34 do
+      print(result[i])
+    end
+  end
+
+  return d
 end
 
 --[[
@@ -56,6 +58,24 @@ N
 100,000,000
 ]]
 
-f(10000000, 1, 2.5, 2.5 * 0.2, 0.2084, 1 / 16376)
--- f(10000000, 1, 2.5, 2.5 * 0.2, 0.2084, 1 / 16376)
+local A = 1000000
+local C = 10000000
+local X = 1200 / 354 / 2
 
+for i = 1, 30 do
+  local B = math.floor((A + C) / 2)
+
+  local a = f(A, 1, 2.5, 2.5 * 0.6, 2.5 * 0.4, 0.2084, 1 / 16376)
+  local b = f(B, 1, 2.5, 2.5 * 0.6, 2.5 * 0.4, 0.2084, 1 / 16376)
+  local c = f(C, 1, 2.5, 2.5 * 0.6, 2.5 * 0.4, 0.2084, 1 / 16376)
+
+  print(A, B, C)
+
+  if b < 1.7 then
+    C = B
+  else
+    A = B
+  end
+end
+
+f(3055543, 1, 2.5, 2.5 * 0.6, 2.5 * 0.4, 0.2084, 1 / 16376, true)
