@@ -130,9 +130,9 @@ PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこ�
 さて、ポンチ絵の縦軸が、「新規感染者数」ではなく、SIRモデルにおける\(I(t)\)ではないか、そのような指摘があった。SIRモデルは常微分方程式系によって以下のように与えられる（<a target="_blank" href="https://www.ism.ac.jp/editsec/toukei/pdf/54-2-461.pdf">西浦 and 稲葉, 2006</a>）。
 
 \[\begin{aligned}
-  \frac{ dS(t) }{ dt } &amp;= - \beta S(t) I(t) \\
-  \frac{ dI(t) }{ dt } &amp;= \beta S(t) I(t) - \gamma I(t) \\
-  \frac{ dR(t) }{ dt } &amp;= \gamma I(t) \\
+  \frac{dS(t)}{dt} &amp;= - \beta S(t) I(t) \\
+  \frac{dI(t)}{dt} &amp;= \beta S(t) I(t) - \gamma I(t) \\
+  \frac{dR(t)}{dt} &amp;= \gamma I(t) \\
 \end{aligned}\]
 全人口\(N = S(t) + I(t) + R(t)\)、再生産数\(\mathcal{R}=\frac{\beta N}{\gamma}\)とおくと、
 \[
@@ -141,7 +141,7 @@ PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこ�
 \(N\)がとてもおおきいとき、
 \[\begin{aligned}
   \frac{ dI(t) }{ dt } &amp;= \gamma \left( \mathcal{R} - 1 \right) I(t) \\
-  I(t) &amp;= I(0) e^{ \gamma (\mathcal{R} - 1) } \\
+  I(t) &amp;= I(0) e^{\gamma (\mathcal{R} - 1) t} \\
 \end{aligned}\]
 \(\mathcal{R}=2.5\)が与えられているので、式(1)とみくらべると、
 \[\begin{aligned}

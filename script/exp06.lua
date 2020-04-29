@@ -45,7 +45,7 @@ local function f(N, I, r0, r1, r2, gamma, step, flag)
   end
 end
 
-local gamma = 0.208436296431092
+local gamma = 0.208460960385849
 
 -- f(3055544, 1, 2.5, 2.5 * 0.2, 2.5 * 0.2, gamma, 1 / 16376, true)
 f(3055544, 1, 2.5, 2.5 * 0.35, 2.5 * 0.35, gamma, 1 / 16376, true)
