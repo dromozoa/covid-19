@@ -36,6 +36,9 @@ table.table-half {
   max-width: 400px;
 }
 
+td.td-right {
+  text-align: right;
+}
 </style>
 </head>
 <body>
@@ -44,7 +47,9 @@ table.table-half {
 <h1>COVID-19 / 東京星に、いこう</h1>
 
 <p style="text-align: right">
-2020年4月27日
+2020年4月28日<br>
+煙人計画・著<br>
+煙人計画・訳
 </p>
 
 <p>
@@ -52,7 +57,7 @@ table.table-half {
 </p>
 
 <p>
-本稿では、ふたつのポンチ絵、<a href="#figure1">図1</a>と<a href="#figure2">図2</a>を《リバースエンジニアリング》する。SIRモデルを用いて、すくなくとも定性的に、これらのポンチ絵を再現できることが指摘されている [<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/vaporoid/status/1251031615142162432">3</a>] 。縦軸が、すくなくとも一般的な意味において、「新規感染者数」ではないだろうことについてもいくつかの指摘がある [<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/vaporoid/status/1251031615142162432">3</a>, <a target="_blank" href="https://twitter.com/yoh_tanimoto/status/1250385333524496384">4</a>] 。
+本稿では、ふたつのポンチ絵、<a href="#figure1">図1</a>と<a href="#figure2">図2</a>を《リバースエンジニアリング》する。SIRモデルを用いて、すくなくとも定性的に、これらのポンチ絵を再現できることが指摘されている [<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/vaporoid/status/1251031615142162432">3</a>] 。縦軸が、すくなくとも一般的な意味において、「新規感染者数」ではなく、SIRモデルにおける\(I(t)\)ではないかといういくつかの指摘がある [<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/vaporoid/status/1251031615142162432">3</a>, <a target="_blank" href="https://twitter.com/yoh_tanimoto/status/1250385333524496384">4</a>] 。
 </p>
 
 <p>
@@ -82,47 +87,47 @@ PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこ�
 </p>
 
 <p>
-20日めまでの抽出結果を<a href="#table1">表1</a>に示す。量子化の影響で小数点以下の人類が生まれた。±1人くらいばらついただろうから、気になるのであれば四捨五入してもよいだろう。
+20日めまでの抽出結果を<a href="#table1">表1</a>に示す。量子化の影響で小数点以下の人類が生まれた。±1人くらいばらついているだろうから、気になるのであれば四捨五入してもよいだろう。
 </p>
 
 <table id="table1" class="table-half">
   <caption>表1 <a href="#figure2">図2</a>から抽出した値</caption>
   <tbody>
     <tr><th>流行時刻（日）</th><th>「新規感染者数」（人）</th></tr>
-    <tr><td>0</td><td>1.3</td></tr>
-    <tr><td>1</td><td>1.3</td></tr>
-    <tr><td>2</td><td>2.7</td></tr>
-    <tr><td>3</td><td>2.7</td></tr>
-    <tr><td>4</td><td>4.0</td></tr>
-    <tr><td>5</td><td>5.4</td></tr>
-    <tr><td>6</td><td>6.7</td></tr>
-    <tr><td>7</td><td>9.4</td></tr>
-    <tr><td>8</td><td>12.1</td></tr>
-    <tr><td>9</td><td>17.5</td></tr>
-    <tr><td>10</td><td>22.9</td></tr>
-    <tr><td>11</td><td>31.0</td></tr>
-    <tr><td>12</td><td>43.1</td></tr>
-    <tr><td>13</td><td>59.2</td></tr>
-    <tr><td>14</td><td>79.4</td></tr>
-    <tr><td>15</td><td>109.0</td></tr>
-    <tr><td>16</td><td>149.4</td></tr>
-    <tr><td>17</td><td>203.3</td></tr>
-    <tr><td>18</td><td>278.7</td></tr>
-    <tr><td>19</td><td>379.6</td></tr>
-    <tr><td>20</td><td>519.6</td></tr>
+    <tr><td class="td-right">0</td><td class="td-right">1.3</td></tr>
+    <tr><td class="td-right">1</td><td class="td-right">1.3</td></tr>
+    <tr><td class="td-right">2</td><td class="td-right">2.7</td></tr>
+    <tr><td class="td-right">3</td><td class="td-right">2.7</td></tr>
+    <tr><td class="td-right">4</td><td class="td-right">4.0</td></tr>
+    <tr><td class="td-right">5</td><td class="td-right">5.4</td></tr>
+    <tr><td class="td-right">6</td><td class="td-right">6.7</td></tr>
+    <tr><td class="td-right">7</td><td class="td-right">9.4</td></tr>
+    <tr><td class="td-right">8</td><td class="td-right">12.1</td></tr>
+    <tr><td class="td-right">9</td><td class="td-right">17.5</td></tr>
+    <tr><td class="td-right">10</td><td class="td-right">22.9</td></tr>
+    <tr><td class="td-right">11</td><td class="td-right">31.0</td></tr>
+    <tr><td class="td-right">12</td><td class="td-right">43.1</td></tr>
+    <tr><td class="td-right">13</td><td class="td-right">59.2</td></tr>
+    <tr><td class="td-right">14</td><td class="td-right">79.4</td></tr>
+    <tr><td class="td-right">15</td><td class="td-right">109.0</td></tr>
+    <tr><td class="td-right">16</td><td class="td-right">149.4</td></tr>
+    <tr><td class="td-right">17</td><td class="td-right">203.3</td></tr>
+    <tr><td class="td-right">18</td><td class="td-right">278.7</td></tr>
+    <tr><td class="td-right">19</td><td class="td-right">379.6</td></tr>
+    <tr><td class="td-right">20</td><td class="td-right">519.6</td></tr>
   </tbody>
 </table>
 
 <p>
-<a href="#figure1">図1</a>はラスタ画像だからピクセルを数えた。<a href="#figure2">図2</a>の20日めに相当する<a href="#figure1">図1</a>の0日めの「新規感染者数」は518.6±2人程度と読める。最初の20日を再現するために、大仰な数理モデルは必要ない。たとえば、
+<a href="#figure1">図1</a>はラスタ画像なので、手ずからピクセルを数えた。<a href="#figure2">図2</a>の20日めに相当する<a href="#figure1">図1</a>の0日めの「新規感染者数」は518.6±2人程度と読める。最初の20日を再現するために、大仰な数理モデルは必要ない。たとえば、
 \[
   e^{0.3127t} \tag{1}
 \]
-という指数関数で、ほどよく再現できる。
+なんていう指数関数で、ほどよく再現できる。
 </p>
 
 <p>
-さて、ポンチ絵の縦軸は「新規感染者数」ではなく、SIRモデルにおける\(I(t)\)ではないか、そのような指摘があった。SIRモデルは常微分方程式系によって以下のように与えられる（<a target="_blank" href="https://www.ism.ac.jp/editsec/toukei/pdf/54-2-461.pdf">西浦 and 稲葉, 2006</a>）。
+さて、ポンチ絵の縦軸が、「新規感染者数」ではなく、SIRモデルにおける\(I(t)\)ではないか、そのような指摘があった。SIRモデルは常微分方程式系によって以下のように与えられる（<a target="_blank" href="https://www.ism.ac.jp/editsec/toukei/pdf/54-2-461.pdf">西浦 and 稲葉, 2006</a>）。
 
 \[\begin{aligned}
   \frac{ dS(t) }{ dt } &amp;= - \beta S(t) I(t) \\
@@ -141,14 +146,58 @@ PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこ�
 \(\mathcal{R}=2.5\)が与えられているので、式(1)とみくらべると、
 \[\begin{aligned}
   I(0) &amp;= 1 \\
-  \gamma &amp;= 0.2085 \\
+  \gamma &amp;\approx 0.2085 \\
 \end{aligned}\]
 と推定できる。\(\gamma \approx 0.2\)という指摘 [<a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">5</a>] と同様の結果がえられた。
 </p>
 
 <p>
-とてもおおきいとした\(N\)は、それじゃあ、どれくらいおおきいだろうか。<a href="#figure1">図1</a>にてがかりがある。再生産数\(\mathcal{R}=1\)で「新規感染者数」は水平である。1ピクセルあたり3.4人程度だから、7日間で1.7人減少しても、画像上は水平に見えるだろう。この条件を満たすように、数値計算で\(N\)の下限を求めると\(N \gt 3055543\)になった。つまり、全人口\(N\)は300万人より大きいだろうということだ。
+とてもおおきいとした\(N\)は、それじゃあ、どれくらいおおきいだろう。<a href="#figure1">図1</a>にてがかりがある。再生産数\(\mathcal{R}=1\)で「新規感染者数」が水平である。縦1ピクセルあたり3.4人程度だから、7日間で1.7人減少しても、画像上は水平に見えるだろう。この条件を満たすような\(N\)の下限を数値計算で求めると\(N \gt 3055543\)になった。全人口\(N\)は、つまり、すくなくとも300万人よりおおきい。
 </p>
+
+<p>
+ここまではパースペクティブで、いわば物語の導入だ。畢竟、おもしろくなるのはここからだ。いくつかの補助線を導入する。
+</p>
+
+<h2>第一の補助線（4月7日）</h2>
+
+<p>
+2020年4月7日、緊急事態宣言が<a target="_blank" href="https://www.kantei.go.jp/jp/98_abe/actions/202004/07corona.html">発出</a>された。同日の<a target="_blank" href="https://twitter.com/ClusterJapan/status/1247467401001627648">@ClusterJapan氏のツイート</a>の動画で西浦博氏は述べている。
+</p>
+
+<blockquote>
+<p>
+例えば経団連の計画によると、普段の流行が起こる前の接触の40%削減ということが目標に掲げられていました。それを何とか今週達成をして、次の週までに+20%、60%の削減を達成して、その次の週までにはトータルで8割の接触が削減できるような計画をみんなで考えていけないでしょうか。
+</p>
+</blockquote>
+
+<p>
+この発言は<a href="#figure1">図1</a>の灰色の線「段階的に8割の接触減の場合」に対応する。つまり、<a href="#figure1">図1</a>の0日め、<a href="#figure2">図2</a>の20日めは4月7日だ。「新規感染者数」は、3月18日に1人くらいで4月7日に520人くらいだった数字だ。この計算上の《都市》において、3月18日から4月7日までの間、再生産数は\(\mathcal{R} = \mathcal{R_0} = 2.5\)だ。いうまでもない。《クラスター対策》が敗北した、あるいは《クラスター対策》が存在しなかった《時間線》の、これは物語なのだ。
+</p>
+
+<h2>第二の補助線（点線）</h2>
+
+<p>
+ふたつのポンチ絵のふたつの点線は水平でも垂直でもない。一九九九年の東京ナロードニキ大学（<a href="#footnote1">註1</a>）の卒論発表会で、かかるポンチ絵をプレゼンテーションしたならば、舟をこいでいた学科長がくわっと眼を見開き、（学科推薦が決まっていても）落第を言いわたしたことだろう。
+</p>
+
+<p>
+曲線の端点が横軸の目盛りと目盛りのまんなかに位置しているのだから、縦の点線は目盛りと目盛りのまんなかを通らなければならなかった。かくあるべきだった点線のために緑色のガイドを追加した（<a href="#figure3">図3</a>）。横の点線については、
+</p>
+
+<p>
+<figure id ="figure3" class="figure-half">
+  <a target="_blank" href="tokyo05.png"><img src="tokyo05.png"></a>
+  <figcaption>図3 ガイドを追加して</figcaption>
+</figure>
+</p>
+
+<h2>註釈</h2>
+
+<dl>
+  <dt id="footnote1">註1</dt>
+  <dd>矢作俊彦の仮想戦記ライトノベルに登場する大学の名称。本稿の著者は造兵学科に在籍していたとうそぶいている。</dd>
+</dl>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
