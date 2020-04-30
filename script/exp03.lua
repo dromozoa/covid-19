@@ -99,5 +99,5 @@ end
 -- path(svg:query "#g2323 > path" :attr "d")
 -- scale(svg:query "#g2231 > path" :attr "d")
 -- 報告日は5日めから
--- path(svg:query "#g2365 > path" :attr "d")
-path(svg:query "#g2407 > path" :attr "d")
+path(svg:query "#g2365 > path" :attr "d")
+-- path(svg:query "#g2407 > path" :attr "d")
