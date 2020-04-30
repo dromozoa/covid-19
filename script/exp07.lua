@@ -16,15 +16,26 @@ local result_filename = "punch04-02-80.txt"
 local source_data = read_data(source_filename, 0)
 local result_data = read_data(result_filename, 5)
 
-io.write "solve(["
+local source_data = {}
+for i = 0, 20 do
+  source_data[i] = math.exp(0.3127 * i)
+end
+for i = 21, 80 do
+  source_data[i] = 520 * math.exp(-0.1043 * (i - 20))
+end
+
+io.write "mnewton(["
 
 local x = 26
-for i = x, x + 15 do
+-- local x = 34
+local y = 19 -- 20
+
+for i = x, x + y do
   if i > x then
     io.write ",\n"
   end
   local n = 0
-  for j = i - 21, i - 6 do
+  for j = i - 6 - y, i - 6 do
     n = n + 1
     if n > 1 then
       io.write " + "
@@ -36,14 +47,26 @@ end
 
 io.write "], [\n"
 
-for i = 1, 16 do
+for i = 1, y + 1 do
   if i > 1 then
     io.write ", "
   end
   io.write(("x%d"):format(i))
 end
 
+-- io.write "]);\n"
+io.write "], [\n"
+
+for i = 1, y + 1 do
+  if i > 1 then
+    io.write ", "
+  end
+  io.write "0"
+end
+
 io.write "]);\n"
+
+
 
 
 -- for i = 6, 32 do
