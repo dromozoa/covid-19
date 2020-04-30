@@ -19,12 +19,12 @@ local result_data = read_data(result_filename, 5)
 io.write "solve(["
 
 local x = 26
-for i = x, x + 13 do
+for i = x, x + 15 do
   if i > x then
     io.write ",\n"
   end
   local n = 0
-  for j = i - 19, i - 6 do
+  for j = i - 21, i - 6 do
     n = n + 1
     if n > 1 then
       io.write " + "
@@ -36,7 +36,7 @@ end
 
 io.write "], [\n"
 
-for i = 1, 14 do
+for i = 1, 16 do
   if i > 1 then
     io.write ", "
   end
