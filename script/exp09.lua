@@ -39,6 +39,7 @@ local J = read_data(result_filename, 5)
     X A = B
   になる。
 
+
 ]]
 
 local u_p = 6
