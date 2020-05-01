@@ -41,12 +41,12 @@ local J = read_data(result_filename, 5)
 
 ]]
 
-local u_p = 5
-local u_q = 25
+local u_p = 6
+local u_q = 26
 local u_n = u_q - u_p + 1
 
-local t_p = 5
-local t_q = 80
+local t_p = 26
+local t_q = 70
 local t_n = t_q - t_p + 1
 
 local X = {}
