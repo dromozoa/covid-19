@@ -13,16 +13,27 @@ end
 local source_filename = "punch04-80.txt"
 local result_filename = "punch04-02-80.txt"
 
+local source_filename = "punch04-60.txt"
+local result_filename = "punch04-02-60.txt"
+
 local source_data = read_data(source_filename, 0)
 local result_data = read_data(result_filename, 5)
 
-local source_data = {}
-for i = 0, 20 do
-  source_data[i] = math.exp(0.3127 * i)
+local calc_source_data = false
+
+if calc_source_data then
+  source_data = {}
+  for i = 0, 20 do
+    source_data[i] = math.exp(0.3127 * i)
+  end
+  for i = 21, 80 do
+    source_data[i] = 520 * math.exp(-0.1043 * (i - 20))
+  end
 end
-for i = 21, 80 do
-  source_data[i] = 520 * math.exp(-0.1043 * (i - 20))
-end
+
+--[[
+load("mnewton");
+]]
 
 io.write "mnewton(["
 
