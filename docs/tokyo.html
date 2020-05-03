@@ -55,23 +55,71 @@ td.td-right {
 </p>
 
 <p>
-本稿では、新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵（図1）を《リバースエンジニアリング》する。
+本稿では、新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵（<a href="#figure1">図1</a>）を《リバースエンジニアリング》する。
+</p>
+
+<p>
+<figure id ="figure1">
+  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf"><img src="tokyo01.png"></a>
+  <figcaption>図1 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵</figcaption>
+</figure>
+</p>
+
+<p>
+<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>は、PDF形式で厚生労働省のウェブページに公開された。メタ情報によれば、「<a target="_blank" href="https://www.mhlw.go.jp/kouseiroudoushou/kanbumeibo/">菱谷 文彦 (hishitani-fumihiko)</a>」によって「2020/04/22 19:13」に「Microsoft&copy; Word 2016」でPDFが作成されたらしい。
+</p>
+
+<h2>点線</h2>
+
+<p>
+1999年の東京ナロードニキ大学（註?）の卒論発表会で、こんなポンチ絵をプレゼンテーションしたら、舟をこいでいた学科長がクワッと眼を見ひらき、「どうして点線が傾いているのですか？」と即座に落第を言いわたされただろう。
+</p>
+
+<p>
+わかりやすいように<a href="#figure1">図1</a>のポンチ絵に垂直・水平の緑色のガイド線を追加した（<a href="#figure2">図2</a>）。曲線の端点が横軸の目盛りと目盛りのまんなかに位置している以上、縦の点線は横軸の目盛りと目盛りのまんなかを通らなければならない。
 </p>
 
 <p>
 <figure id ="figure2">
-  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf"><img src="tokyo02.png"></a>
-  <figcaption>図2 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵</figcaption>
+  <a target="_blank" href="tokyo02.png"><img src="tokyo02.png"></a>
+  <figcaption>図2 <a href="#figure1">図1</a>のポンチ絵に垂直・水平の緑色のガイド線を追加</figcaption>
 </figure>
 </p>
 
+<p>
+横の点線は80日で1割以上減少している。あまりに傾きすぎてはいないか。<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>の注釈は、「1日100人」という基準を用いて説明している。つまり、横の点線が水平であるべきことを示唆している。
+</p>
 
+<p>
+<blockquote>
+流行対策開始前までは\(\mathcal{R_0}=2.5\)で感染者数が増加する。感染日別の新規感染者数は80％の接触削減により15日間で1日100人まで減少する（青線）。しかし、接触の削減が65％であると1日100人に達するには9 日以上を要する（灰色線）。また、確定患者として報告されるにはおおよそ2週間の遅れを要し、80％削減のとき1日100人に到達するには緊急事態宣言から約1か月を要する（オレンジ線）。黄色線は65％削減のときの確定患者数である。
+</blockquote>
+</p>
 
+<p>
+点線をあとから描きいれた人物は、感染症対策の、疫学の玄人であるが、グラフの素人である（註?）。
+</p>
 
+<h2>書体</h2>
 
+<p>
+書体には詳しくないが、MSゴシックの箇所と游ゴシックとCalibriの箇所が混在していることはあきらかだろう（<a href="#figure3">図3</a>）。後者が、あとから書きいれられた箇所だろうことは容易に推測できる。PERCENT SIGNとFULLWIDTH PERCENT SIGNの不統一も、あじわいぶかさが感じられる。
+</p>
 
+<p>
+<figure id ="figure3">
+  <a target="_blank" href="tokyo03.png"><img src="tokyo03.png"></a>
+  <figcaption>図3 <a href="#figure1">図1</a>のポンチ絵で游ゴシックとCalibriの箇所に緑色の角丸四角形を追加</figcaption>
+</figure>
+</p>
 
-<hr>
+<h2>点列</h2>
+
+<p>
+PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこみ、不要な部分を削除してからSVGで出力して、曲線を構成する点列を抽出した。各点の局所座標をながめると、どこかの段階で量子化された痕跡を感じる（Wordに貼りつけた段階かもしれないし、WordからPDFを出力した段階かもしれないし、それらとは別の段階かもしれない）。
+</p>
+
+<!--
 
 <p>
 本稿では、ふたつのポンチ絵、<a href="#figure1">図1</a>と<a href="#figure2">図2</a>を《リバースエンジニアリング》する。SIRモデルを用いて、すくなくとも定性的に、これらのポンチ絵を再現できることが指摘されている。縦軸が、すくなくとも一般的な意味ににおいて、「新規感染者数」ではないだろうことについても指摘がある。[<a target="_blank" href="https://twitter.com/jun_makino/status/1250946746420588545">1</a>, <a target="_blank" href="https://twitter.com/jun_makino/status/1252943162055639041">2</a>, <a target="_blank" href="https://twitter.com/yoh_tanimoto/status/1250385333524496384">3</a>]
@@ -216,6 +264,8 @@ PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこ�
   <dt id="footnote1">註1</dt>
   <dd>矢作俊彦の仮想戦記ライトノベルに登場する大学の名称。本稿の著者は造兵学科に在籍していたとうそぶいている。</dd>
 </dl>
+
+-->
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
