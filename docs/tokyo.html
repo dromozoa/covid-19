@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>COVID-19 / 東京星に、いこう</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<style>
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
+
+figcaption {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="markdown-body">
+
+<h1>COVID-19 / 東京星に、いこう</h1>
+
+<p style="text-align: right">
+2020年5月4日
+</p>
+
+<p>
+私、生まれも育ちも工学です。人呼んで<a target="_blank" href="https://twitter.com/vaporoid">煙人計画</a>と発します。とかく数学に行きましても、医学に行きましても、分野分野のお兄貴さんお姐さんにごやっかいかけがちになるアラフォーです。以後、見苦しき文体お見知りおかれまして、向後万端ひきたってよろしくおたの申します。
+</p>
+
+<p>
+本稿では、新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵（<a href="#figure1">図1</a>）を《リバースエンジニアリング》する。
+</p>
+
+<p>
+<figure id ="figure1">
+  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf"><img src="tokyo01.png"></a>
+  <figcaption>図1 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵</figcaption>
+</figure>
+</p>
+
+<p>
+<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>は、PDF形式で厚生労働省のウェブページに公開された。メタ情報によれば、「<a target="_blank" href="https://www.mhlw.go.jp/kouseiroudoushou/kanbumeibo/">菱谷 文彦 (hishitani-fumihiko)</a>」によって「2020/04/22 19:13」に「Microsoft&copy; Word 2016」でPDFが作成されたらしい。
+</p>
+
+<h2>点線</h2>
+
+<p>
+1999年の東京ナロードニキ大学（<a href="#footnote1">註1</a>）の卒論発表会で、このようなポンチ絵をプレゼンテーションしたら、舟をこいでいた学科長がクワッと眼を見ひらき、「どうして点線が傾いているのですか？」と即座に落第を言いわたされただろう。
+</p>
+
+<p>
+わかりやすいように<a href="#figure1">図1</a>のポンチ絵に垂直・水平の緑色のガイド線を追加した（<a href="#figure2">図2</a>）。曲線の端点が横軸の目盛りと目盛りのまんなかに位置している以上、縦の点線は横軸の目盛りと目盛りのまんなかを通らなければならない。だけど、そうはなっていないんだ。
+</p>
+
+<p>
+<figure id ="figure2">
+  <a target="_blank" href="tokyo02.png"><img src="tokyo02.png"></a>
+  <figcaption>図2 <a href="#figure1">図1</a>のポンチ絵に垂直・水平の緑色のガイド線を追加した。</figcaption>
+</figure>
+</p>
+
+<p>
+横の点線は80日で1割以上減少している。あまりに傾きすぎてはいないか。<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>の注釈は、「1日100人」という基準を用いて説明している。つまり、横の点線が水平であるべきことを示唆している。
+</p>
+
+<p>
+<blockquote>
+流行対策開始前までは\(\mathcal{R_0}=2.5\)で感染者数が増加する。感染日別の新規感染者数は80％の接触削減により15日間で1日100人まで減少する（青線）。しかし、接触の削減が65％であると1日100人に達するには9 日以上を要する（灰色線）。また、確定患者として報告されるにはおおよそ2週間の遅れを要し、80％削減のとき1日100人に到達するには緊急事態宣言から約1か月を要する（オレンジ線）。黄色線は65％削減のときの確定患者数である。
+</blockquote>
+</p>
+
+<p>
+点線をあとから描きいれた人物は、感染症対策の、疫学の玄人であるが、グラフの素人である（<a href="#footnote2">註2</a>）。
+</p>
+
+<h2>書体</h2>
+
+<p>
+書体にはくわしくないけれど、MSゴシックの箇所と游ゴシックとCalibriの箇所が混在していることはあきらかだろう（<a href="#figure3">図3</a>）。後者が、あとから書きいれられた箇所だろうことは容易に推測できる。PERCENT SIGNとFULLWIDTH PERCENT SIGNの不統一も、あじわいぶかさが感じられる。
+</p>
+
+<p>
+<figure id ="figure3">
+  <a target="_blank" href="tokyo03.png"><img src="tokyo03.png"></a>
+  <figcaption>図3 <a href="#figure1">図1</a>のポンチ絵の游ゴシックとCalibriの箇所に緑色の角丸四角形を追加した。</figcaption>
+</figure>
+</p>
+
+<h2>点列</h2>
+
+<p>
+PDFを<a target="_blank" href="https://inkscape.org/">Inkspace</a>で読みこみ、不要な部分を削除してSVGで出力して、曲線を構成する点列を抽出した（<a target="_blank" href="tokyo.xlsx">抽出結果</a>）。各点の局所座標をながめると、どこかの段階で量子化された痕跡を感じる（Wordに貼りつけた段階かもしれないし、WordからPDFを出力した段階かもしれないし、それらとは別の段階かもしれない）。
+</p>
+
+<h3>感染日別</h3>
+
+<p>
+<a target="_blank" href="tokyo.xlsx">抽出結果</a>によれば、感染日別の新規感染者数は0日めにおおよそ1人、20日めにおおよそ520人であるらしい。仮に、仮にだけど、感染日別の新規感染者数を\(I(t)\)とおくと、20日め以前は、
+\[
+  I(t) = e^{0.3127t} \quad (0 \le t \le 20, \mathcal{R} = 2.5)
+\]
+でほどよく再現できる。21日め以降も、
+\[
+  I(t) = \begin{cases}
+    520 e^{-0.1042(t-20)} &amp;(t \gt 20, \mathcal{R} = 0.5) \\
+    520 e^{-0.0261(t-20)} &amp;(t \gt 20, \mathcal{R} = 0.875) \\
+  \end{cases}
+\]
+でほどよく再現できる。\(\gamma \approx 0.2085\)とおくと、
+\[
+  I(t) = \begin{cases}
+    e^{\gamma (\mathcal{R} - 1) t} &amp;\, (0 \le t \le 20) \\
+    520 e^{\gamma (\mathcal{R} - 1) (t - 20)} &amp;\, (t \gt 20) \\
+  \end{cases} \tag{1}
+\]
+でほどよく再現できる。どこかで見たような気がするんだけど、どこで見たんだっけ（回収される伏線）。
+</p>
+
+<h3>報告日別</h3>
+
+<p>
+感染日（80%削減）の青線の積算と、報告日（80%削減）のオレンジ線の積算は、ほとんど等しい。つまり、感染日別の新規感染者数にてきとうな確率分布をかけてあげると、報告日別の新規感染者数が出てきそうな按配だ。<a target="_blank" href="tokyo.xlsx">抽出結果</a>を観察すると、\(t\)日めの感染日別の新規感染者数が、\(t+5\)日めの報告日別の新規感染者数にほとんど影響していないことがわかる。
+</p>
+
+<ul>
+  <li>報告日別の新規感染者数は4日めまで値が存在せず、5日めから値が存在するが0人である。</li>
+  <li>80%削減と65%削減で感染日別の新規感染者数の値が別れるのは21日めからで、報告日別の新規感染者数の値が別れるのは26日めからである。</li>
+</ul>
+
+<p>
+報告日別の新規感染者数を\(J(t)\)とおいて、\(u\)日後への影響を\(a_u\)で与えると、
+\[
+  J(t) = \sum_{u} a_u I(t + u)
+\]
+数学にはくわしくないけれど、これくらいの連立方程式なら根性で解けそうな気がする（<a href="#figure4">図4</a>の青線）。金融工学あたりで見たことがある気がする線が出てきたので、てきとうに<a target="_blank" href="https://ja.wikipedia.org/wiki/%E5%AF%BE%E6%95%B0%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83">対数正規分布</a>をあてはめた（<a href="#figure4">図4</a>の赤線）。\(\sigma = 0.5\)として、3日めから29日めまでで累積が99%になるように調節して、それらしさをかもしだした。
+</p>
+
+<p>
+<figure id ="figure4">
+  <a target="_blank" href="tokyo04.png"><img src="tokyo04.png"></a>
+  <figcaption>図4 感染日別の新規感染者数から報告日別の新規感染者数をもとめるための確率分布</figcaption>
+</figure>
+</p>
+
+<p>
+感染の5日めから感染者が報告されはじめ、最頻値が10日めごろ、中央値（累積で50%が報告されるの）が11.5日めごろ、累積で90%が報告されるのが19.5日めごろという分布である。
+</p>
+
+<h3>再現</h3>
+
+<p>
+感染日別の新規感染者数については最大1.5人程度、報告日別の新規感染者数については最大8人程度ずれた（<a href="#figure5">図5</a>）。確率分布のつめに甘さがあることはいなめない。
+</p>
+
+<p>
+<figure id ="figure5">
+  <a target="_blank" href="tokyo05.png"><img src="tokyo05.png"></a>
+  <figcaption>図5 抽出した点列を太い黒線で描き、そのうちから計算で再現した点列を緑線で描きいれた。黒線があらわなところほどずれがおおきい。</figcaption>
+</figure>
+</p>
+
+<h2>SIRモデル</h2>
+
+<p>
+SIRモデルは常微分方程式系によって以下のように与えられる（<a target="_blank" href="https://www.ism.ac.jp/editsec/toukei/pdf/54-2-461.pdf">西浦 and 稲葉, 2006</a>）。
+\[\begin{aligned}
+  \frac{dS(t)}{dt} &amp;= - \beta S(t) I(t) \\
+  \frac{dI(t)}{dt} &amp;= \beta S(t) I(t) - \gamma I(t) \\
+  \frac{dR(t)}{dt} &amp;= \gamma I(t) \\
+\end{aligned}\]
+全人口\(N = S(t) + I(t) + R(t)\)、再生産数\(\mathcal{R}=\frac{\beta N}{\gamma}\)とおくと、
+\[
+  \frac{ dI(t) }{ dt } = \gamma \left( \mathcal{R} \left( 1 - \frac{I(t) + R(t)}{N} \right) - 1 \right) I(t)
+\]
+\(N\)がとてもおおきいとき、
+\[\begin{aligned}
+  \frac{ dI(t) }{ dt } &amp;= \gamma \left( \mathcal{R} - 1 \right) I(t) \\
+  I(t) &amp;= I_0 e^{\gamma (\mathcal{R} - 1) t} \\
+\end{aligned}\]
+奇妙なほどに式(1)と似かよっている。こんなに似ているということは、なにか意味があるのではないか。そのように考えたものたちがあったのは、ごく自然のなりゆきだろう。
+</p>
+
+<h3>ラベルをつけまちがえた可能性</h3>
+
+<p>
+その可能性はない。
+</p>
+
+<p>
+点線をろくに引くことができないのだから、もちろん、ラベルをつけまちがえた可能性はいなめない。しかし、ラベルの書体はMSゴシックであり、つまり、あらかじめラベルづけされていたのだ。そもそも、SIRモデルの\(I(t)\)を定義どおりに解しているとき、てきとうな確率分布でぼかしたら、フィジカルな意味がよくわからなくなってしまわないだろうか。
+</p>
+
+<h3>初手から\(I(t)\)で新規感染者数を計算している可能性</h3>
+
+<p>
+その可能性はない。
+</p>
+
+<p>
+<a target="_blank" href="https://www.mhlw.go.jp/stf/seisakunitsuite/newpage_00011.html">「新型コロナウイルス感染症対策の見解」（2020年3月2日）</a>の4節のポンチ絵の感染日別患者数において、緊急事態宣言直後に不連続性を見てとれる。2020年4月4日の<a target="_blank" href="https://twitter.com/ClusterJapan/status/1246314012389675009">@ClusterJapan氏のツイート</a>の動画では、SIRモデルの\(-\frac{dS(t)}{dt}\)とおぼしき曲線を説明に供している（<a href="#figure6">図6</a>）。
+</p>
+
+<p>
+<figure id ="figure6">
+  <a target="_blank" href="https://twitter.com/ClusterJapan/status/1246314012389675009"><img src="tokyo06.png"></a>
+  <figcaption>図6 2020年4月4日の<a target="_blank" href="https://twitter.com/ClusterJapan/status/1246314012389675009">@ClusterJapan氏のツイート</a>の動画のキャプチャ画像</figcaption>
+</figure>
+</p>
+
+<p>
+なにしろ、\(\gamma \approx 0.2085\)を用いてSIRモデルの\(-\frac{dS(t)}{dt}\)を計算すると、奇妙なほどに<a href="#figure6">図6</a>が再現できてしまうのだ（<a href="#figure7">図7</a>）。ふしぎだなぁ（回収されない伏線）。
+</p>
+
+<p>
+<figure id ="figure7">
+  <a href="tokyo07.png"><img src="tokyo07.png"></a>
+  <figcaption>図7 \(\gamma \approx 0.2085\)を用いてSIRモデルの\(-\frac{dS(t)}{dt}\)を計算した。</figcaption>
+</figure>
+</p>
+
+<p>
+2020年4月4日の11日後、2020年4月15日の<a target="_blank" href="https://twitter.com/ClusterJapan/status/1250364311144296454">@ClusterJapan氏のツイート</a>で<a href="#figure1">図1</a>とほとんどひとしいポンチ絵が呈示された。
+</p>
+
+<h3>専門家や官僚や政治家が誤っている可能性</h3>
+
+<p>
+その可能性はない。
+</p>
+
+<p>
+<a href="#figure6">図6</a>のポンチ絵では新規感染者数が急激にさがりすぎるので、愚鈍で蒙昧な大衆を恐怖させることができない。かかるがゆえに実効再生産数がじゅうぶんにさがらない。そのように4月6日から4月15日のどこかで専門家や官僚や政治家が考えたのではないか。
+</p>
+
+<p>
+愚鈍で蒙昧な大衆を啓蒙し、教導するべく、数理モデルは転進しなければならなかった。専門家や官僚や政治家はけっして誤らない。誤るのはいつでも大衆だ。この素晴らしい数理モデルに説明を（<a href="#footnote3">註3</a>）。
+</p>
+
+
+<h2>註釈</h2>
+
+<dl>
+  <dt id="footnote1">註1</dt>
+  <dd>矢作俊彦の歴史改変ライトノベルに登場する大学の名称。本稿の著者は造兵学科に在籍していたという設定。</dd>
+  <dt id="footnote2">註2</dt>
+  <dd>平野耕太の異世界転生マンガのセリフのパロディ。</dd>
+  <dt id="footnote3">註3</dt>
+  <dd>暁なつめの異世界転生ライトノベルのタイトルのパロディ。</dd>
+  <dt>註4</dt>
+  <dd>この註はどこからも参照されていない。本稿が宣戦布告であることはいうまでもない。</dd>
+</dl>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body);
+});
+</script>
+</body>
+</html>
