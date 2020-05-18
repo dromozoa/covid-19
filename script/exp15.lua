@@ -10,14 +10,21 @@ local T = 20
 local is_imported = true
 
 local counter  = 0
+local imported = 1
 
 local function p(t, v)
   local w = v
-  local u = v - 1
-  if u < 0 then
-    u = 0
-  else
-    v = 1
+  local u = 0 -- imported
+  if imported > 0 then
+    if v < imported then
+      imported = imported - v
+      u = v
+      v = 0
+    else
+      u = imported
+      v = v - imported
+      imported = 0
+    end
   end
 
   local year, month, day = calendar.jdn_to_date(JDN - T + t)
@@ -27,7 +34,7 @@ local function p(t, v)
 
   io.write(([[
 %d,%s,%.17g,%.17g,%.17g,%.17g
-]]):format(t, date, v, u, w, 0))
+]]):format(t, date, u, v, w, 0))
 end
 
 local gamma = 0.208460960385849
