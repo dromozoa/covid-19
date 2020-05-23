@@ -31,78 +31,47 @@ figcaption {
 <h1>COVID-19 / 贖いの聖者</h1>
 
 <p style="text-align: right">
-2020年5月7日
+2020年5月22日
 </p>
 
-<h2>SIRモデル</h2>
+<h2>実効再生産数</h2>
 
 <p>
-SIRモデルは常微分方程式系によって以下のように与えられる（<a target="_blank" href="https://www.ism.ac.jp/editsec/toukei/pdf/54-2-461.pdf">西浦 and 稲葉, 2006</a>）。
-\[\begin{aligned}
-  \frac{dS(t)}{dt} &amp;= - \beta S(t) I(t) \\
-  \frac{dI(t)}{dt} &amp;= \beta S(t) I(t) - \gamma I(t) \\
-  \frac{dR(t)}{dt} &amp;= \gamma I(t) \\
-\end{aligned}\]
-全人口\(N = S(t) + I(t) + R(t)\)、再生産数\(\mathcal{R}=\frac{\beta N}{\gamma}\)とおくと、
+\(C_{domestic}(t)\)を時刻\(t\)における国内新規感染者数とする。
 \[
-  \frac{dI(t)}{dt}
-    = \gamma
-      \left( \mathcal{R} \left( 1 - \frac{I(t) + R(t)}{N} \right) - 1 \right)
-      I(t)
+  E(C_{domestic}(t))
+    = \mathcal{R_t}
+      \sum^{t-1}_{\tau=1}
+      C_{total}(t - \tau) g(\tau)
+      \frac{F(T - t)}{F(T - t + \tau)}
 \]
-\(N\)がとてもおおきいとき、つまり、\(N \gg I(t) + R(t)\)ならば、
-\[\begin{aligned}
-  \frac{dI(t)}{dt} &amp;= \gamma \left( \mathcal{R} - 1 \right) I(t) \\
-  I(t) &amp;= I_0 e^{\gamma (\mathcal{R} - 1) t} \\
-  \frac{dR(t)}{dt} &amp;= \gamma I_0 e^{\gamma (\mathcal{R} - 1) t} \\
-  R(t) &amp;= \begin{cases}
-    I_0 \left(
-      \frac{1}{\mathcal{R} - 1} e^{\gamma (\mathcal{R} - 1) t}
-        - \frac{1}{\mathcal{R} - 1}
-    \right)
-      &amp; (\mathcal{R} \ne 1) \\
-    I_0 \gamma t
-      &amp; (\mathcal{R} = 1) \\
-  \end{cases} \\
-\end{aligned}\]
-\(I(t)\)は「感染して感染性を有する状態」と定義されている。その伝に従うならば、\(R(t)\)は「感染して感染性を有しない状態」になる。
-\[
-  I(t) + R(t) = \begin{cases}
-    I_0 \left(
-      \frac{\mathcal{R}}{\mathcal{R} - 1} e^{\gamma (\mathcal{R} - 1) t}
-        - \frac{1}{\mathcal{R} - 1}
-    \right)
-      &amp; (\mathcal{R} \ne 1) \\
-    I_0 (1 + \gamma t)
-      &amp; (\mathcal{R} = 1) \\
-  \end{cases} \tag{1}
-\]
-\(I(t) + R(t)\)は、さしづめ累積感染者になるだろうか。
+関数\(g\)は世代間隔の確率密度関数。
 </p>
 
-<p>
-再生産数が\(1\)よりもちいさいとき、累積感染者はいつか\(\frac{I_0}{1 - \mathcal{R}}\)人に収束する。再生産数が\(1\)ならば、累積感染者は\(\frac{1}{\gamma}\)日ごとに\(I_0\)人増えていく。<a href="tokyo.html">前稿</a>で《リバースエンジニアリング》した\(\gamma \approx 0.2085\)をもちいると、およそ\(4.8\)日ごとに\(I_0\)人増えていく直線になる。再生産数が\(1\)よりもおおきいとき、累積感染者は指数関数で増加する。
-</p>
+<pre>
+## generation interval (Nishiura, et al, 2020)
+gi_fit = list(shape=2.305, scale=5.452)
+generation <- function(t){pweibull(t, shape = gi_fit$shape, scale = gi_fit$scale) -
+                          pweibull(t-1, shape = gi_fit$shape, scale = gi_fit$scale)}
+</pre>
 
-<h2>オーバーシュートの傾き</h2>
-
-<p>
-2020年5月4日、「オーバーシュートの傾き（\(2\)日で倍増）」と「オーバーシュートの傾き（\(3\)日で倍増）」が定義された（<a href="#figure1">図1</a>）。
-</p>
-
-<p>
-<figure id ="figure1">
-  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000627553.pdf"><img src="saint01.png"></a>
-  <figcaption>図1 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000627553.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年5月4日）</a>のP.4の図2</figcaption>
-</figure>
-</p>
-
-<p>
-「オーバーシュートの傾き（\(m\)日で倍増）」は、
-\[
-  e^{\ln 2 \frac{t}{m}}
-\]
-</p>
+<pre>
+0	0
+1	0.01856579
+2	0.07225408
+3	0.127564
+4	0.1651393
+5	0.174422
+6	0.1560704
+7	0.1201774
+8	0.08017221
+9	0.04645045
+10	0.02337892
+11	0.01021168
+12	0.003864299
+13	0.001264231
+14	0.0003567299
+</pre>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
