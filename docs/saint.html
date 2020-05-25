@@ -31,47 +31,61 @@ figcaption {
 <h1>COVID-19 / 贖いの聖者</h1>
 
 <p style="text-align: right">
-2020年5月22日
+2020年5月25日
+</p>
+
+<p>
+アテンション・プリーズ。このフィクションは数式です。あらゆる工学はロマンスなので、登場する団体名、会社名、及び個人名と現実のそれらとは一切関係がないなどと誰に断ずる権利があるでしょう
 </p>
 
 <h2>実効再生産数</h2>
 
 <p>
-\(C_{domestic}(t)\)を時刻\(t\)における国内新規感染者数とする。
-\[
-  E(C_{domestic}(t))
-    = \mathcal{R_t}
-      \sum^{t-1}_{\tau=1}
-      C_{total}(t - \tau) g(\tau)
-      \frac{F(T - t)}{F(T - t + \tau)}
-\]
-関数\(g\)は世代間隔の確率密度関数。
+実行再生産数の数式と実装が<a target="_blank" href="https://github.com/contactmodel/COVID19-Japan-Reff">公開</a>された。数式と実装のほとんどは、めんどうな現実に対応するために費やされている。感染日と発症日と診断日と報告日のずれや、輸入例と国内例や、報告の遅れといった現実に対応するために。もちろん、そして高速化のために。
 </p>
 
-<pre>
-## generation interval (Nishiura, et al, 2020)
-gi_fit = list(shape=2.305, scale=5.452)
-generation <- function(t){pweibull(t, shape = gi_fit$shape, scale = gi_fit$scale) -
-                          pweibull(t-1, shape = gi_fit$shape, scale = gi_fit$scale)}
-</pre>
+<p>
+めんどうな現実から目をそらそう。時刻\(t\)における感染日別の新規感染者数を\(i(t)\)、実効再生産数を\(\mathcal{R_t}\)、世代間隔の確率密度関数を\(g\)とおくと、
+\[
+  i(t) = \mathcal{R_t} \sum^{t-1}_{\tau=1} i(t-\tau) g(\tau) \tag{1}
+\]
+世代間隔の確率密度関数は<a target="_blank" href="https://ja.wikipedia.org/wiki/%E3%83%AF%E3%82%A4%E3%83%96%E3%83%AB%E5%88%86%E5%B8%83">ワイブル分布</a>で与えられている（<a href="#figure1">図1</a>）。
+\[\begin{aligned}
+  m &amp;= 2.345 \\
+  \eta &amp;= 5.452 \\
+  F(t) &amp;= 1 - \exp\left\{-\left(\frac{t}{\eta}\right)^m\right\} \\
+  g(t) &amp;= F(t) - F(t-1) \\
+\end{aligned}\]
+\(m\)と\(\eta\)は<a target="_blank" href="https://www.medrxiv.org/content/10.1101/2020.02.03.20019497v2">Nishiuraら, 2020</a>からやってきたらしい。数学にも医学にも、ついでに英語にもくわしくないのでよくわからないけれど。
+</p>
 
-<pre>
-0	0
-1	0.01856579
-2	0.07225408
-3	0.127564
-4	0.1651393
-5	0.174422
-6	0.1560704
-7	0.1201774
-8	0.08017221
-9	0.04645045
-10	0.02337892
-11	0.01021168
-12	0.003864299
-13	0.001264231
-14	0.0003567299
-</pre>
+<p>
+<figure id ="figure1">
+  <a href="saint01.png"><img src="saint01.png"></a>
+  <figcaption>図1 世代間隔の確率密度関数</figcaption>
+</figure>
+</p>
+
+<p>
+ある日に1,000人の新規感染者数がいて、実効再生産数が2.5だとしよう。1,000人のうちの165人が4日後に413人に感染させる。1,000人のうちの174人が5日後に436人に感染させる。式(1)はそういう式だ。感染日別の新規感染者数がわかっていたら、実効再生産数が、いかんともしがたくもとまってしまう。式(1)はそういう式だ。
+</p>
+
+<h2>80%削減</h2>
+
+<p>
+<a href="tokyo.html">前稿</a>で新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵（<a href="figure2">図2</a>）を《リバースエンジニアリング》した。
+</p>
+
+<p>
+<figure id ="figure2">
+  <a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf"><img src="tokyo01.png"></a>
+  <figcaption>図2 新型コロナウイルス感染症対策専門家会議による<a target="_blank" href="https://www.mhlw.go.jp/content/10900000/000624048.pdf">「新型コロナウイルス感染症対策の状況分析・提言」（2020年4月22日）</a>のP.3のポンチ絵</figcaption>
+</figure>
+</p>
+
+<p>
+ここには感染日別の新規感染者数がある。感染日別の新規感染者数がある以上、実効再生産数が、いかんともしがたくもとまってしまう。
+</p>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
