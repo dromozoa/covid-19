@@ -1,7 +1,7 @@
 #! /usr/bin/env lua
 
 local function p(t, v)
-  print(t, v)
+  -- print(t, v)
 end
 
 local function pweibull(a, b, x)
@@ -17,25 +17,12 @@ for t = 1, 28 do
   generation[t] = v
 end
 
-
-local gamma = 0.208460960385849
-local function I(t, R0, R)
-  if t >= 0 then
-    if t <= 20 then
-      return math.exp(gamma * (R0 - 1) * t)
-    else
-      return 520 * math.exp(gamma * (R - 1) * (t - 20))
-    end
-  else
-    return 0
-  end
-end
-
 local data = {}
-
-for t = 0, 80 do
-  local v = I(t, 2.5, 0.875)
+local t = 0
+for line in io.lines() do
+  local v = assert(tonumber(line:match "\t([^\t]+)$"))
   data[t] = v
+  t = t + 1
 end
 
 for t = 1, 80 do
@@ -47,5 +34,5 @@ for t = 1, 80 do
     sum = sum + u * g
   end
   local r = v / sum
-  p(t, r)
+  print(t, r)
 end
