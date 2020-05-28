@@ -31,7 +31,6 @@ local function I(t, R0, R)
   end
 end
 
-
 local function f(N, I, r0, r1, gamma, step)
   local R = 0
 

@@ -28,7 +28,7 @@ end
 for t = 1, 80 do
   local v = data[t]
   local sum = 0
-  for tau = 1, math.min(t - 1, 28) do
+  for tau = 1, math.min(t, 28) do -- ????
     local u = data[t - tau]
     local g = generation[tau]
     sum = sum + u * g
