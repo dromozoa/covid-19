@@ -4,6 +4,15 @@ local function p(t, v)
   -- print(t, v)
 end
 
+local function p2(t, v)
+  -- print(t, v)
+end
+
+local function p3(t, v)
+  print(v)
+end
+
+
 local function pweibull(a, b, x)
   return 1 - math.exp(- (x/b) ^ a)
 end
@@ -40,6 +49,39 @@ local incubation = {
 0.0003336938;
 }
 
+-- 発症日から診断日
+local onsettolabconf = {
+[0] = 0;
+0.02345696;
+0.05282007;
+0.0721969;
+0.08448698;
+0.09074771;
+0.09193884;
+0.08907535;
+0.08319566;
+0.0752958;
+0.06626916;
+0.05686459;
+0.04766585;
+0.03909009;
+0.03140133;
+0.02473341;
+0.01911769;
+0.01451138;
+0.01082347;
+0.007936675;
+0.005724349;
+0.004062637;
+0.002838208;
+0.001952447;
+0.001322952;
+0.0008831976;
+0.000581073;
+0.0003768457;
+0.0002409629;
+}
+
 local generation = {}
 local scale = 2.345
 local shape = 5.452
@@ -71,10 +113,24 @@ for t = 21, 80 do
   p(t, x)
 end
 
+local data2 = {}
+
 for t = 0, 80 do
   local v = 0
   for tau = 0, math.min(t, 28) do
     v = v + data[t - tau] * incubation[tau]
   end
-  print(v)
+  data2[t] = v
+  p2(t, v)
+end
+
+local data3 = {}
+
+for t = 0, 80 do
+  local v = 0
+  for tau = 0, math.min(t, 28) do
+    v = v + data2[t - tau] * onsettolabconf[tau]
+  end
+  data3[t] = v
+  p3(t, v)
 end
